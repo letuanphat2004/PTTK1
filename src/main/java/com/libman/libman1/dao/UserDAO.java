@@ -57,7 +57,7 @@ public class UserDAO {
             ps.setDate(5, java.sql.Date.valueOf(dob));
             ps.setInt(6, readerId);
 
-            return ps.executeUpdate() > 0; // true nếu cập nhật thành công
+            return ps.executeUpdate() > 0;
 
         } catch (Exception e) {
             e.printStackTrace();

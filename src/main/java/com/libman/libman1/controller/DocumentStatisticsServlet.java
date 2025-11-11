@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
-// Link từ home.jsp sẽ trỏ vào "/docStats"
+
 @WebServlet(name = "DocumentStatisticsServlet", urlPatterns = {"/docStats"})
 public class DocumentStatisticsServlet extends HttpServlet {
 
@@ -23,7 +23,6 @@ public class DocumentStatisticsServlet extends HttpServlet {
         docStatsDAO = new DocumentStatisticDAO();
     }
 
-    // Chúng ta xử lý cả GET và POST trong doGet
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -33,18 +32,15 @@ public class DocumentStatisticsServlet extends HttpServlet {
 
             List<DocumentStatistic> statsList;
 
-            // Kiểm tra xem có lọc ngày không
             if (startDateStr != null && !startDateStr.isEmpty() && endDateStr != null && !endDateStr.isEmpty()) {
-                // TRƯỜNG HỢP 2: Lọc theo ngày
                 LocalDate startDate = LocalDate.parse(startDateStr);
                 LocalDate endDate = LocalDate.parse(endDateStr);
                 statsList = docStatsDAO.getDocumentStatisticByDate(startDate, endDate);
 
-                // Gửi lại ngày đã chọn để hiển thị trên form
                 request.setAttribute("startDate", startDateStr);
                 request.setAttribute("endDate", endDateStr);
             } else {
-                // TRƯỜNG HỢP 1: Tải trang ban đầu (lấy tất cả)
+
                 statsList = docStatsDAO.getAllDocumentStatistic();
             }
 
@@ -53,11 +49,10 @@ public class DocumentStatisticsServlet extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
-            // (Nên tạo trang error.jsp để xử lý lỗi)
+
         }
     }
 
-    // Nếu form dùng method="post" thì chỉ cần gọi doGet
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

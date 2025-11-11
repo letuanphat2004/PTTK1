@@ -32,8 +32,6 @@ public class RegisterCardServlet extends HttpServlet {
         }
 
         try {
-            // --- 1. LẤY DỮ LIỆU TỪ FORM (CHO CẢ 2 BẢNG) ---
-
             // Thông tin cá nhân (để UPDATE bảng Users)
             String fullname = request.getParameter("fullname");
             String email = request.getParameter("email");

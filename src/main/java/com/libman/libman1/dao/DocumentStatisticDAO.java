@@ -50,7 +50,7 @@ public class DocumentStatisticDAO {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace(); // Lỗi sẽ in ra console của Tomcat
+            e.printStackTrace();
         }
         return list;
     }

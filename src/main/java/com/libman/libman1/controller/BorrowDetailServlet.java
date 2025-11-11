@@ -38,24 +38,21 @@ public class BorrowDetailServlet extends HttpServlet {
 
             List<BorrowDetail> instances;
 
-            // Kiểm tra xem có lọc ngày không
             if (startDateStr != null && !startDateStr.equals("null") && !startDateStr.isEmpty()) {
                 LocalDate startDate = LocalDate.parse(startDateStr);
                 LocalDate endDate = LocalDate.parse(endDateStr);
                 instances = borrowDetailDAO.getBorrowDetailListByDate(docId, startDate, endDate);
 
-                // Gửi lại ngày để nút "Quay lại" ở trang 2 hoạt động đúng
+
                 request.setAttribute("startDate", startDateStr);
                 request.setAttribute("endDate", endDateStr);
             } else {
-                // Lấy tất cả
+
                 instances = borrowDetailDAO.getAllBorrowDetailList(docId);
             }
 
-            // Lấy tên tài liệu để hiển thị
-            // Document doc = documentDAO.getDocumentById(docId);
-            // request.setAttribute("documentName", doc.getTitle());
-            request.setAttribute("documentName", "Tên tài liệu demo"); // Xóa dòng này khi có DAO
+
+            request.setAttribute("documentName", "Tên tài liệu demo");
 
             request.setAttribute("borrowInstances", instances);
             request.getRequestDispatcher("GDTKchitiettailieu.jsp").forward(request, response);

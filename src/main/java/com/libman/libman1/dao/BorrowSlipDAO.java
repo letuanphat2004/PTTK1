@@ -64,7 +64,6 @@ public class BorrowSlipDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            // Đóng tất cả tài nguyên
             try { if (rsItems != null) rsItems.close(); } catch (Exception e) {}
             try { if (psItems != null) psItems.close(); } catch (Exception e) {}
             db.close(conn, psSlip, rsSlip);

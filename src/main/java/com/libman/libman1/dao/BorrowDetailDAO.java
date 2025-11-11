@@ -11,7 +11,7 @@ import java.util.List;
 
 public class BorrowDetailDAO {
 
-    // Hàm trợ giúp
+
     private BorrowDetail createDTO(ResultSet rs) throws SQLException {
         BorrowDetail dto = new BorrowDetail();
         dto.setBorrowDate(rs.getDate("borrow_date").toLocalDate());
@@ -22,7 +22,6 @@ public class BorrowDetailDAO {
         return dto;
     }
 
-    // Lấy chi tiết CÓ LỌC NGÀY
     public List<BorrowDetail> getBorrowDetailListByDate(int documentId, LocalDate startDate, LocalDate endDate) {
         List<BorrowDetail> list = new ArrayList<>();
         String sql = "SELECT bd.borrow_date, bd.due_date, bd.status, u.fullname, bs.id AS borrowSlipId " +
@@ -51,7 +50,6 @@ public class BorrowDetailDAO {
         return list;
     }
 
-    // Lấy chi tiết KHÔNG LỌC NGÀY
     public List<BorrowDetail> getAllBorrowDetailList(int documentId) {
         List<BorrowDetail> list = new ArrayList<>();
         String sql = "SELECT bd.borrow_date, bd.due_date, bd.status, u.fullname, bs.id AS borrowSlipId " +
