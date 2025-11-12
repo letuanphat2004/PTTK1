@@ -21,7 +21,7 @@ public class RegisterCardServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8"); // Thêm để đọc tiếng Việt
+        request.setCharacterEncoding("UTF-8");
 
         HttpSession session = request.getSession();
         User loggedInUser = (User) session.getAttribute("account");
@@ -32,41 +32,35 @@ public class RegisterCardServlet extends HttpServlet {
         }
 
         try {
-            // Thông tin cá nhân (để UPDATE bảng Users)
             String fullname = request.getParameter("fullname");
             String email = request.getParameter("email");
             String phone = request.getParameter("phone");
             String address = request.getParameter("address");
             LocalDate dob = LocalDate.parse(request.getParameter("dob"));
 
-            // Thông tin thẻ (để INSERT/UPDATE bảng ReaderCards)
             String cardType = request.getParameter("cardType");
             LocalDate issueDate = LocalDate.now();
             LocalDate expirationDate = issueDate.plusYears(5);
 
-            // --- 2. GỌI CÁC DAO ---
+
             UserDAO userDAO = new UserDAO();
             ReaderCardDAO cardDAO = new ReaderCardDAO();
 
-            // Cập nhật profile (bảng Users)
             boolean profileUpdated = userDAO.updateReaderProfile(loggedInUser.getId(), fullname, email, phone, address, dob);
 
-            // Kích hoạt/Tạo thẻ (bảng ReaderCards)
             boolean cardCreated = cardDAO.activateOrCreateCard(loggedInUser.getId(), cardType, issueDate, expirationDate);
 
-            // --- 3. XỬ LÝ KẾT QUẢ ---
+
             try (PrintWriter out = response.getWriter()) {
                 if (profileUpdated && cardCreated) {
-                    // Cập nhật lại thông tin user trong session
                     loggedInUser.setFullname(fullname);
                     loggedInUser.setEmail(email);
                     loggedInUser.setPhone(phone);
                     loggedInUser.setAddress(address);
                     java.util.Date dateDob = java.util.Date.from(dob.atStartOfDay(ZoneId.systemDefault()).toInstant());
-                    loggedInUser.setDob(dateDob); // Giờ đã đúng kiểu Date
-                    session.setAttribute("account", loggedInUser); // Lưu lại
+                    loggedInUser.setDob(dateDob);
+                    session.setAttribute("account", loggedInUser);
 
-                    // Cập nhật trạng thái thẻ
                     session.setAttribute("hasActiveCard", true);
 
                     out.println("<script type='text/javascript'>");
@@ -83,7 +77,6 @@ public class RegisterCardServlet extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
-            // Xử lý lỗi (ví dụ: người dùng nhập ngày sinh sai định dạng)
             try (PrintWriter out = response.getWriter()) {
                 out.println("<script type='text/javascript'>");
                 out.println("alert('Đã xảy ra lỗi. Vui lòng kiểm tra lại thông tin đã nhập.');");

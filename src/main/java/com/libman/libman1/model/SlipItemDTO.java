@@ -7,7 +7,7 @@ public class SlipItemDTO {
     private LocalDate borrowDate;
     private LocalDate dueDate;
 
-    // Getters và Setters
+
     public String getDocumentTitle() { return documentTitle; }
     public void setDocumentTitle(String documentTitle) { this.documentTitle = documentTitle; }
     public String getStatus() { return status; }

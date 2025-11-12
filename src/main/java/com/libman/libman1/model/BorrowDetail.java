@@ -9,7 +9,6 @@ public class BorrowDetail {
     private String readerName;
     private int borrowSlipId;
 
-    // Getters và Setters (Alt + Insert)
     public LocalDate getBorrowDate() { return borrowDate; }
     public void setBorrowDate(LocalDate borrowDate) { this.borrowDate = borrowDate; }
     public LocalDate getDueDate() { return dueDate; }

@@ -28,7 +28,7 @@ public class DocumentStatisticDAO {
                 "FROM " +
                 "  borrowdetails bd " +
                 "JOIN " +
-                "  documents d ON bd.document_id = d.id " + // Sửa 2: "Documents" -> "documents"
+                "  documents d ON bd.document_id = d.id " +
                 "WHERE " +
                 "  bd.borrow_date BETWEEN ? AND ? " +
                 "GROUP BY " +
@@ -55,11 +55,10 @@ public class DocumentStatisticDAO {
         return list;
     }
 
-    // Phương thức 2: Lấy tất cả thống kê (cho lần tải trang đầu tiên)
     public List<DocumentStatistic> getAllDocumentStatistic() {
         List<DocumentStatistic> list = new ArrayList<>();
 
-        // === SỬA TÊN BẢNG Ở ĐÂY ===
+
         String sql = "SELECT " +
                 "  d.id, d.title, d.author, COUNT(bd.id) AS borrowCount " +
                 "FROM " +
@@ -81,7 +80,7 @@ public class DocumentStatisticDAO {
                 list.add(createDTO(rs));
             }
         } catch (Exception e) {
-            e.printStackTrace(); // Lỗi sẽ in ra console của Tomcat
+            e.printStackTrace();
         }
         return list;
     }

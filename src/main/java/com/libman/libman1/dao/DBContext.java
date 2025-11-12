@@ -14,7 +14,7 @@ public class DBContext {
         String url = "jdbc:mysql://" + serverName + ":" + portNumber + "/" + dbName
                 + "?useSSL=false&allowPublicKeyRetrieval=true";
 
-        // Nạp driver của MySQL
+
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         // Trả về đối tượng Connection

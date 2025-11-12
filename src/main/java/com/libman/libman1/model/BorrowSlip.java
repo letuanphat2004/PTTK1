@@ -8,7 +8,7 @@ public class BorrowSlip {
     private String note;
     private List<SlipItemDTO> items;
 
-    // Getters và Setters
+
     public int getSlipId() { return slipId; }
     public void setSlipId(int slipId) { this.slipId = slipId; }
     public String getReaderName() { return readerName; }

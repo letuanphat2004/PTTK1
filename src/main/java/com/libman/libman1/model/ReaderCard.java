@@ -5,17 +5,17 @@ import java.time.LocalDate;
 
 public class ReaderCard {
     private int id;
-    private int readerId; // Khóa ngoại, trỏ đến Users.id
-    private LocalDate issueDate; // Ngày cấp
-    private LocalDate expirationDate; // Ngày hết hạn
+    private int readerId;
+    private LocalDate issueDate;
+    private LocalDate expirationDate;
     private String status;
     private String cardType;
 
-    // Constructor mặc định
+
     public ReaderCard() {
     }
 
-    // Constructor để TẠO MỚI (chưa có ID)
+    
     public ReaderCard(int readerId, LocalDate issueDate, LocalDate expirationDate, String status, String cardType) {
         this.readerId = readerId;
         this.issueDate = issueDate;

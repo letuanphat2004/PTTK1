@@ -69,6 +69,7 @@ public class BorrowDetailDAO {
                     list.add(createDTO(rs));
                 }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

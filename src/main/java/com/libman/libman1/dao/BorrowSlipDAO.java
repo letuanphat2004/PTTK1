@@ -33,7 +33,6 @@ public class BorrowSlipDAO {
         try {
             conn = db.getConnection();
 
-            // 1. Lấy thông tin chung của phiếu
             psSlip = conn.prepareStatement(sqlSlip);
             psSlip.setInt(1, borrowSlipId);
             rsSlip = psSlip.executeQuery();
@@ -45,7 +44,6 @@ public class BorrowSlipDAO {
                 slip.setStaffName(rsSlip.getString("staffName"));
                 slip.setNote(rsSlip.getString("note"));
 
-                // 2. Lấy danh sách tài liệu trong phiếu đó
                 psItems = conn.prepareStatement(sqlItems);
                 psItems.setInt(1, borrowSlipId);
                 rsItems = psItems.executeQuery();

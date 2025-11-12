@@ -1,13 +1,13 @@
 package com.libman.libman1.model;
 
-// DTO: Lớp chứa dữ liệu "ảo" cho giao diện
+
 public class DocumentStatistic {
     private int documentId;
     private String documentTitle;
     private String documentAuthor;
     private int borrowCount;
 
-    // Constructor rỗng
+
     public DocumentStatistic() {}
 
     // Getters và Setters (Alt + Insert)

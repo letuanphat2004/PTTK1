@@ -47,6 +47,7 @@ public class DocumentStatisticsServlet extends HttpServlet {
             request.setAttribute("statsList", statsList);
             request.getRequestDispatcher("GDTKtailieu.jsp").forward(request, response);
 
+
         } catch (Exception e) {
             e.printStackTrace();
 

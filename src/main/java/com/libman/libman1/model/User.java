@@ -25,7 +25,7 @@ public class User {
         this.phone = phone;
         this.address = address;
         this.dob = dob;
-        this.borrow_Count = 0; // Người dùng mới luôn có borrowCount = 0
+        this.borrow_Count = 0;
     }
 
     public User(int id, String username, String password, String fullname, String email,
@@ -36,10 +36,10 @@ public class User {
         this.fullname = fullname;
         this.email = email;
         this.role = role;
-        this.phone = phone;       // Sửa thứ tự gán phone cho đúng
+        this.phone = phone;
         this.address = address;
-        this.dob = dob;           // 2. Sửa từ LocalDate thành Date
-        this.borrow_Count = borrow_Count; // 1. Thêm tham số borrowCount và gán giá trị
+        this.dob = dob;
+        this.borrow_Count = borrow_Count;
     }
 
     public int getId() {

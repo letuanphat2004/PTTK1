@@ -6,7 +6,6 @@
     <title>Đăng nhập</title>
 
     <style>
-        /* CSS cho toàn bộ trang */
         body {
             font-family: Arial, sans-serif; /* Đặt font chữ dễ đọc */
             background-color: #f4f4f9; /* Màu nền xám nhạt */
@@ -17,7 +16,6 @@
             margin: 0;
         }
 
-        /* CSS cho khung đăng nhập */
         .login-container {
             background-color: #ffffff; /* Màu nền trắng cho khung */
             padding: 2rem; /* Khoảng cách đệm bên trong */

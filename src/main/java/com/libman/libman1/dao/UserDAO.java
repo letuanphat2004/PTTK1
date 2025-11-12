@@ -39,7 +39,7 @@ public class UserDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null; // Trả về null nếu không tìm thấy user
+        return null;
     }
     public boolean updateReaderProfile(int readerId, String fullname, String email, String phone, String address, java.time.LocalDate dob) {
         String query = "UPDATE Users SET fullname = ?, email = ?, phone = ?, address = ?, dob = ? WHERE id = ?";
